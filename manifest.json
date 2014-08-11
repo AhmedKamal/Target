@@ -7,7 +7,7 @@
         "persistent": false } ,
     "permissions" : ["management" , "storage"],
     "chrome_url_overrides" : {
-        "newtab": "target.html"
+        "newtab": "index.html"
     } ,
     "icons": {
         "128": "icon-128.png",
