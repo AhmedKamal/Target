@@ -6,7 +6,7 @@ body {
 }
 
 input{
-    border: hidden;
+    /*border: solid;*/
 }
 
 ul{
@@ -23,30 +23,41 @@ ul{
     font-family: Helvetica Neue;
     font-weight: bold;
     text-shadow: -1px -1px rgba(255,255,255,0.2);
+
 }
 
 #todolist{
 
 background-color: #feec8a;
-width: 450px;
+width: 480px;
 position: relative;
 margin-left: 500px;
-margin-top: 20px
 
+
+}
+
+#todoitem{
+        /*border: solid;*/
 }
 
 #colorplatte{
     position: relative;
     margin-left: 500px;
     margin-top: 0;
+    margin-bottom: 20px;
 }
 .coloroption{
     width: 30px;
     height: 30px;
     display: table-cell;
     position: relative;
+    border: solid;
+    border-width: 1px;
+    border-color: transparent;
+
 
 }
+
 
 .space{
     width: 10px;
@@ -56,6 +67,9 @@ margin-top: 20px
 
 }
 
+#whitebox{
+    background-color: azure;
+}
 #redbox{
     background-color: rgb(247, 132, 106);
 }
@@ -71,7 +85,7 @@ margin-top: 20px
 .noteinput{
 	background-color: #feec8a;
     position: relative;
-    margin-left: 30px;
+    margin-left: 20px;
 	height: 60px;
     width: 350px;
 	color: grey;
@@ -82,10 +96,25 @@ margin-top: 20px
     width: 20px;
     height: 20px;
     position: relative;
-    top: 5px;
+    top: 4px;
     left: 10px;
 }
 
+.noteremove{
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    position: relative;
+    color: grey;
+    border: hidden;
+    background-color: #feec8a;
+    /*display: none;*/
+}
+
+.noteremove:hover{
+    color: black;
+            /*display: inline;*/
+}
 #verticalLine{
     border-left: thick solid darkgray;
 }
