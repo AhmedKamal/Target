@@ -83,13 +83,15 @@ margin-left: 500px;
     background-color: rgb(146, 228, 201);
 }
 .noteinput{
-	background-color: #feec8a;
+    background-color: #feec8a;
     position: relative;
     margin-left: 20px;
-	height: 60px;
+    height: 60px;
     width: 350px;
-	color: grey;
-	font-size: 20px;
+    color: grey;
+    font-size: 20px;
+    border: hidden;
+
 }
 
 .notecb{
