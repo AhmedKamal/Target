@@ -1,23 +1,18 @@
-    /**
- * Created by akamal8 on 09/08/2014.
- */
-
-
-//Global Variables
 var todolist;
 
-window.onload= function () {
+window.onload = function () {
     todolist = document.getElementById("todolist");
+
+    addNewClearItem()
     var currentInput = document.getElementsByClassName("noteinput")[0];
-    var currentcb = document.getElementsByClassName("notecb")[0];
-    var currentremovebtn = document.getElementsByClassName("noteremove")[0];
-    var coloroptions = document.getElementsByClassName("coloroption");
+    var currentRemoveBtn = document.getElementsByClassName("noteremove")[0];
+    var colorOptions = document.getElementsByClassName("coloroption");
+
     currentInput.onkeydown = function (e) {
         if(currentInput.value != "") {
-            OnEnterPressed(e);
+            onEnterPressed(e);
             }
         }
-
     currentInput.onmouseout = function (currentInput) {
         //get the child index
         var index =0;
@@ -25,21 +20,16 @@ window.onload= function () {
         while((myparent = myparent.previousSibling) != null){
             index++;
         }
-        //alert(index);
-        OnMouseOut(index);
+        onMouseOut(index);
     }
 
-    currentcb.onclick = function (e) {
-        OnChecked(e.target);
+    currentRemoveBtn.onclick= function (e) {
+        destroyElement(e);
     }
 
-
-    currentremovebtn.onclick= function (e) {
-        DestroyElement(e);
-    }
-    for(var i =0; i<coloroptions.length; i++)
+    for(var i =0; i<colorOptions.length; i++)
     {
-        var coption = coloroptions.item(i);
+        var coption = colorOptions.item(i);
 
         coption.onclick = function(e){
         var sender = e.target;
@@ -68,33 +58,32 @@ window.onload= function () {
 //        }
 //    }
 
-
-    function DestroyElement (e) {
-        var firsttodo= document.getElementById("todolist").firstElementChild;
-        var element = e.target;
-        var myparent = element.parentNode;
-        if(myparent == firsttodo) return;
-        while(myparent.hasChildNodes()){
-            myparent.removeChild(myparent.lastChild);
-        }
+function destroyElement (e) {
+    var firsttodo= document.getElementById("todolist").firstElementChild;
+    var element = e.target;
+    var myparent = element.parentNode;
+    if(myparent == firsttodo) return;
+    while(myparent.hasChildNodes()){
+        myparent.removeChild(myparent.lastChild);
     }
-    function OnChecked (currentcb){
+}
 
-        var myparent = currentcb.parentNode;
-        if(currentcb.checked == true){
+function onChecked (currentcb){
 
-            myparent.children[1].style.textDecoration = "line-through";
-        }
+    var myparent = currentcb.parentNode;
+    if(currentcb.checked == true){
 
-        if(currentcb.checked != true){
-
-            myparent.children[1].style.textDecoration = "none";
-        }
-
+        myparent.children[1].style.textDecoration = "line-through";
     }
 
+    if(currentcb.checked != true){
 
-function OnEnterPressed(e){
+        myparent.children[1].style.textDecoration = "none";
+    }
+
+}
+
+function onEnterPressed(e){
     if(e.keyCode == 13) {
         addNewClearItem();
 
@@ -102,12 +91,12 @@ function OnEnterPressed(e){
         firstelementinput.focus();
         firstelementinput.onkeydown = function (e) {
             if(firstelementinput.value != "")
-            OnEnterPressed(e);
+            onEnterPressed(e);
         }
     }
 }
 
-function OnMouseOut(itemId){
+function onMouseOut(itemId){
     StorageArea.set({'id' : itemId });
 
 }
@@ -122,7 +111,7 @@ function addNewClearItem() {
     cbinputelement.type="checkbox";
     cbinputelement.className = "notecb";
     cbinputelement.onclick = function (e) {
-        OnChecked(e.target);
+        onChecked(e.target);
     }
     //create the input of the element
     var textinputelement = document.createElement("input");
@@ -135,9 +124,10 @@ function addNewClearItem() {
     removebuttonelement.value = "✖";
     removebuttonelement.className="noteremove";
     removebuttonelement.onclick = function (e) {
-        DestroyElement(e);
+        destroyElement(e);
     }
 
+    newitem.border = "solid"
     newitem.appendChild(cbinputelement);
     newitem.appendChild(textinputelement);
     newitem.appendChild(removebuttonelement);

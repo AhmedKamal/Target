@@ -27,13 +27,13 @@ ul{
 }
 
 #todolist{
+    background-color: #feec8a;
+}
 
-background-color: #feec8a;
-width: 480px;
-position: relative;
-margin-left: 500px;
-
-
+.center{
+    width: 500px;
+    position: relative;
+    margin: auto;
 }
 
 #todoitem{
@@ -42,7 +42,8 @@ margin-left: 500px;
 
 #colorplatte{
     position: relative;
-    margin-left: 500px;
+    margin-right: auto;
+    width: 200px;
     margin-top: 0;
     margin-bottom: 20px;
 }
@@ -57,7 +58,6 @@ margin-left: 500px;
 
 
 }
-
 
 .space{
     width: 10px;
@@ -87,10 +87,10 @@ margin-left: 500px;
     position: relative;
     margin-left: 20px;
 	height: 60px;
-    width: 350px;
+    width: 405px;
 	color: grey;
 	font-size: 20px;
-    border: hidden;
+    border-style: none;
 }
 
 .notecb{
@@ -99,6 +99,7 @@ margin-left: 500px;
     position: relative;
     top: 4px;
     left: 10px;
+    border-style: none;
 }
 
 .noteremove{
@@ -107,10 +108,8 @@ margin-left: 500px;
     font-size: 20px;
     position: relative;
     color: grey;
-    border: hidden;
     background-color: #feec8a;
-    /*display: none;*/
-}
+    border-style: none;}
 
 .noteremove:hover{
     color: black;
