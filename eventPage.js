@@ -1,12 +1,6 @@
-    /**
- * Created by akamal8 on 09/08/2014.
- */
-
-
-//Global Variables
 var todolist;
 
-window.onload= function () {
+window.onload = function () {
     todolist = document.getElementById("todolist");
     var currentInput = document.getElementsByClassName("noteinput")[0];
     var currentcb = document.getElementsByClassName("notecb")[0];
@@ -14,7 +8,7 @@ window.onload= function () {
     var coloroptions = document.getElementsByClassName("coloroption");
     currentInput.onkeydown = function (e) {
         if(currentInput.value != "") {
-            OnEnterPressed(e);
+            onEnterPressed(e);
             }
         }
 
@@ -26,16 +20,16 @@ window.onload= function () {
             index++;
         }
         //alert(index);
-        OnMouseOut(index);
+        onMouseOut(index);
     }
 
     currentcb.onclick = function (e) {
-        OnChecked(e.target);
+        onChecked(e.target);
     }
 
 
     currentremovebtn.onclick= function (e) {
-        DestroyElement(e);
+        destroyElement(e);
     }
     for(var i =0; i<coloroptions.length; i++)
     {
@@ -69,32 +63,32 @@ window.onload= function () {
 //    }
 
 
-    function DestroyElement (e) {
-        var firsttodo= document.getElementById("todolist").firstElementChild;
-        var element = e.target;
-        var myparent = element.parentNode;
-        if(myparent == firsttodo) return;
-        while(myparent.hasChildNodes()){
-            myparent.removeChild(myparent.lastChild);
-        }
+function destroyElement (e) {
+    var firsttodo= document.getElementById("todolist").firstElementChild;
+    var element = e.target;
+    var myparent = element.parentNode;
+    if(myparent == firsttodo) return;
+    while(myparent.hasChildNodes()){
+        myparent.removeChild(myparent.lastChild);
     }
-    function OnChecked (currentcb){
+}
+function onChecked (currentcb){
 
-        var myparent = currentcb.parentNode;
-        if(currentcb.checked == true){
+    var myparent = currentcb.parentNode;
+    if(currentcb.checked == true){
 
-            myparent.children[1].style.textDecoration = "line-through";
-        }
-
-        if(currentcb.checked != true){
-
-            myparent.children[1].style.textDecoration = "none";
-        }
-
+        myparent.children[1].style.textDecoration = "line-through";
     }
 
+    if(currentcb.checked != true){
 
-function OnEnterPressed(e){
+        myparent.children[1].style.textDecoration = "none";
+    }
+
+}
+
+
+function onEnterPressed(e){
     if(e.keyCode == 13) {
         addNewClearItem();
 
@@ -102,12 +96,12 @@ function OnEnterPressed(e){
         firstelementinput.focus();
         firstelementinput.onkeydown = function (e) {
             if(firstelementinput.value != "")
-            OnEnterPressed(e);
+            onEnterPressed(e);
         }
     }
 }
 
-function OnMouseOut(itemId){
+function onMouseOut(itemId){
     StorageArea.set({'id' : itemId });
 
 }
@@ -122,7 +116,7 @@ function addNewClearItem() {
     cbinputelement.type="checkbox";
     cbinputelement.className = "notecb";
     cbinputelement.onclick = function (e) {
-        OnChecked(e.target);
+        onChecked(e.target);
     }
     //create the input of the element
     var textinputelement = document.createElement("input");
@@ -135,7 +129,7 @@ function addNewClearItem() {
     removebuttonelement.value = "✖";
     removebuttonelement.className="noteremove";
     removebuttonelement.onclick = function (e) {
-        DestroyElement(e);
+        destroyElement(e);
     }
 
     newitem.appendChild(cbinputelement);
