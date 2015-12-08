@@ -59,25 +59,31 @@ window.onload = function () {
 //    }
 
 function destroyElement (e) {
-    var firsttodo= document.getElementById("todolist").firstElementChild;
-    var element = e.target;
-    var myparent = element.parentNode;
-    if(myparent == firsttodo) return;
-    while(myparent.hasChildNodes()){
-        myparent.removeChild(myparent.lastChild);
-    }
+    var targetItem = e.target.parentNode;
+
+    if(isParentFirstElement(targetItem))
+        return;
+
+    targetItem.parentNode.removeChild(targetItem);
+}
+
+function isParentFirstElement(myparent) {
+    var firsttodo = todolist.firstElementChild;
+
+    if(myparent == firsttodo)
+        return true
+    else
+        return false
 }
 
 function onChecked (currentcb){
 
     var myparent = currentcb.parentNode;
     if(currentcb.checked == true){
-
         myparent.children[1].style.textDecoration = "line-through";
     }
 
     if(currentcb.checked != true){
-
         myparent.children[1].style.textDecoration = "none";
     }
 
@@ -85,15 +91,27 @@ function onChecked (currentcb){
 
 function onEnterPressed(e){
     if(e.keyCode == 13) {
-        addNewClearItem();
 
-        var firstelementinput = todolist.children[0].children[1];
-        firstelementinput.focus();
-        firstelementinput.onkeydown = function (e) {
-            if(firstelementinput.value != "")
-            onEnterPressed(e);
+        if(isItemsLessThanLimit()) {
+            addNewClearItem();
+
+            var firstelementinput = todolist.children[0].children[1];
+            firstelementinput.focus();
+            firstelementinput.onkeydown = function (e) {
+                if (firstelementinput.value != "")
+                    onEnterPressed(e);
+            }
         }
     }
+}
+
+maxItemsNumber = 5;
+function isItemsLessThanLimit() {
+    var cnt = todolist.children.length;
+    if(cnt < maxItemsNumber)
+        return true;
+    else
+        return false;
 }
 
 function onMouseOut(itemId){
