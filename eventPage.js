@@ -64,7 +64,7 @@ function destroyElement (e) {
     if(isParentFirstElement(targetItem))
         return;
 
-    targetItem.parentNode.removeChild(targetItem);
+    targetItem.remove()
 }
 
 function isParentFirstElement(myparent) {
