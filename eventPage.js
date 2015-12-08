@@ -2,16 +2,17 @@ var todolist;
 
 window.onload = function () {
     todolist = document.getElementById("todolist");
+
+    addNewClearItem()
     var currentInput = document.getElementsByClassName("noteinput")[0];
-    var currentcb = document.getElementsByClassName("notecb")[0];
-    var currentremovebtn = document.getElementsByClassName("noteremove")[0];
-    var coloroptions = document.getElementsByClassName("coloroption");
+    var currentRemoveBtn = document.getElementsByClassName("noteremove")[0];
+    var colorOptions = document.getElementsByClassName("coloroption");
+
     currentInput.onkeydown = function (e) {
         if(currentInput.value != "") {
             onEnterPressed(e);
             }
         }
-
     currentInput.onmouseout = function (currentInput) {
         //get the child index
         var index =0;
@@ -19,21 +20,16 @@ window.onload = function () {
         while((myparent = myparent.previousSibling) != null){
             index++;
         }
-        //alert(index);
         onMouseOut(index);
     }
 
-    currentcb.onclick = function (e) {
-        onChecked(e.target);
-    }
-
-
-    currentremovebtn.onclick= function (e) {
+    currentRemoveBtn.onclick= function (e) {
         destroyElement(e);
     }
-    for(var i =0; i<coloroptions.length; i++)
+
+    for(var i =0; i<colorOptions.length; i++)
     {
-        var coption = coloroptions.item(i);
+        var coption = colorOptions.item(i);
 
         coption.onclick = function(e){
         var sender = e.target;
@@ -62,7 +58,6 @@ window.onload = function () {
 //        }
 //    }
 
-
 function destroyElement (e) {
     var firsttodo= document.getElementById("todolist").firstElementChild;
     var element = e.target;
@@ -72,6 +67,7 @@ function destroyElement (e) {
         myparent.removeChild(myparent.lastChild);
     }
 }
+
 function onChecked (currentcb){
 
     var myparent = currentcb.parentNode;
@@ -86,7 +82,6 @@ function onChecked (currentcb){
     }
 
 }
-
 
 function onEnterPressed(e){
     if(e.keyCode == 13) {
@@ -132,6 +127,7 @@ function addNewClearItem() {
         destroyElement(e);
     }
 
+    newitem.border = "solid"
     newitem.appendChild(cbinputelement);
     newitem.appendChild(textinputelement);
     newitem.appendChild(removebuttonelement);
