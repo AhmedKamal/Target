@@ -3,7 +3,9 @@ var todolist;
 window.onload = function () {
     todolist = document.getElementById("todolist");
 
+    loadQuotes();
     addNewClearItem()
+    showQuote()
     var currentInput = document.getElementsByClassName("noteinput")[0];
     var currentRemoveBtn = document.getElementsByClassName("noteremove")[0];
     var colorOptions = document.getElementsByClassName("coloroption");
@@ -13,19 +15,10 @@ window.onload = function () {
             onEnterPressed(e);
             }
         }
-    currentInput.onmouseout = function (currentInput) {
-        //get the child index
-        var index =0;
-        var myparent = currentInput.parentNode;
-        while((myparent = myparent.previousSibling) != null){
-            index++;
-        }
-        onMouseOut(index);
-    }
-
     currentRemoveBtn.onclick= function (e) {
         destroyElement(e);
     }
+
 
     for(var i =0; i<colorOptions.length; i++)
     {
@@ -50,7 +43,26 @@ window.onload = function () {
     }
 }
 
+function showQuote() {
+   var index = Math.floor((Math.random()*33) +1)
+   targetQuote = q[index];
 
+   var quoteViewer = document.getElementById("quote");
+   var quoteWriter = document.getElementById("quote-writer");
+
+   quoteViewer.innerText = targetQuote.quote;
+   quoteWriter.innerText = "— " + targetQuote.source;
+}
+
+//currentInput.onmouseout = function (currentInput) {
+//    //get the child index
+//    var index =0;
+//    var myparent = currentInput.parentNode;
+//    while((myparent = myparent.previousSibling) != null){
+//        index++;
+//    }
+//    onMouseOut(index);
+//}
 //    function ApplySelectionEffect(element){
 //        var myparent = element.parentNode;
 //        for(var i=0; i<myparent.children.length; i++){

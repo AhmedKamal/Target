@@ -18,22 +18,40 @@ ul{
 
 #header{
     font-size: 30px;
+
+}
+
+h1, h2 {
     color: rgba(0, 0, 0, 0.3);
-    text-align: center;
     font-family: Helvetica Neue;
     font-weight: bold;
     text-shadow: -1px -1px rgba(255,255,255,0.2);
-
+    text-align: center;
 }
 
 #todolist{
     background-color: #feec8a;
 }
 
-.center{
-    width: 500px;
+.left {
+    float: left;
+    width: 80%;
     position: relative;
     margin: auto;
+}
+
+.center{
+    width: 500px;
+    position: absolute;
+    left: 40%;
+    margin: auto;
+}
+
+.right {
+    float: right;
+    width: 20%;
+    /*right: 10px;*/
+    /*position: absolute;*/
 }
 
 #todoitem{
@@ -119,3 +137,6 @@ ul{
     border-left: thick solid darkgray;
 }
 
+#todoItemsContainer {
+    width: 500px;
+}
